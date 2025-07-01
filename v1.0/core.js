@@ -195,7 +195,7 @@ class EventCompositor {
         return id
     }
 
-    haltObervation(observation_id) {
+    haltObservation(observation_id) {
         if (this.observations.has(observation_id)) {
             this.observations.get(observation_id).paused = true
             return 1
@@ -221,4 +221,7 @@ class EventCompositor {
     }
 }
 
-if(window.WN) WN.register('EventCompositor@v1.0', EventCompositor)
+if(window.WN) {
+    WN.shared.EventCompositor = new EventCompositor()
+    WN.shared.EventCompositorClass = EventCompositor
+}
